@@ -1,6 +1,7 @@
 ## Week Day Picker
 The widget display a dialog contain the calandar on week mode.
 Return a `Future<DateTime>` if the user select a date or `Future<null>` if the user cancel the dialog
+<p><img src="https://raw.githubusercontent.com/MoezAyadiDev/week_day_picker/main/assets/weekdaypicker.gif"></P>
 
 ## Installation
 Add `week_day_picker` to your `pubspec.yaml` as a dependacy
@@ -46,6 +47,8 @@ Don't confuse it with current date the initialDate is the selected Date
     initialDate : DateTime(2022, 10, 1),
 );
 ```
+<p><img src="https://raw.githubusercontent.com/MoezAyadiDev/week_day_picker/main/assets/picker_selectedDate.gif"></P>
+
 
 To send list of selectable date use `selectableDay`
 ```dart
@@ -70,6 +73,8 @@ WeekDayPicker(
   selectableDayInWeek: [1, 5],
 );
 ```
+<p><img src="https://raw.githubusercontent.com/MoezAyadiDev/week_day_picker/main/assets/picker_selectableDayWeek.gif"></P>
+
 
 To combine `selectableDayInWeek` and `selectableDay` by default the picker use inner join. 
 That meen that the allowed date must satisfy the two condition.
@@ -106,5 +111,6 @@ By default the dialog use default theme to change the theme color use is options
     
     
 ## Additional information
-for more information check the complete example :
+for more information check the complete example
+<p></p>
 In case of problem please open an [issue](https://github.com/MoezAyadiDev/week_day_picker/issues/new?template=bug_report.md)
