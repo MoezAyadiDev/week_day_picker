@@ -68,6 +68,9 @@ class WeekDayPicker {
   ///The text color of selected item
   final Color? colorOnSelected;
 
+  ///The background Color
+  final Color? backgroundColor;
+
   /// Shows a dialog containing a Material Design date picker.
   ///
   /// When the widget displayed, it will show the month of and the year
@@ -125,6 +128,7 @@ class WeekDayPicker {
     this.colorDisabled,
     this.colorSelected,
     this.colorOnSelected,
+    this.backgroundColor,
   }) {
     assert(
       !lastDate.isBefore(firstDate),
@@ -194,6 +198,7 @@ class WeekDayPicker {
             disableColor: colorDisabled,
             selectedColor: colorSelected,
             onSelectedColor: colorOnSelected,
+            backgroundColor: backgroundColor,
           ),
         );
       },
