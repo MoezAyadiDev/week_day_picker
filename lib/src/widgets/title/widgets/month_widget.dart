@@ -1,64 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
+import 'package:week_day_picker/src/models/month_list.dart';
 import 'package:week_day_picker/src/models/month_model.dart';
-import 'package:week_day_picker/src/widgets/week_day_widget.dart';
+import 'package:week_day_picker/src/widgets/commen/dropdown_widget.dart';
 
-class MonthWidget extends StatefulWidget {
-  final Color textColor;
-  final Color backgroundColor;
-  final MonthModel selectedMonth;
-  final List<MonthModel> months;
-  const MonthWidget({
-    super.key,
-    required this.textColor,
-    required this.backgroundColor,
-    required this.selectedMonth,
-    required this.months,
-  });
-
-  @override
-  State<MonthWidget> createState() => _MonthWidgetState();
-}
-
-class _MonthWidgetState extends State<MonthWidget> {
-  late MonthModel drowdownvalue = widget.selectedMonth;
-  final log = Logger('MonthWidget');
-  @override
-  void didChangeDependencies() async {
-    super.didChangeDependencies();
-    log.fine('didChangeDependencies');
-    if (drowdownvalue != context.appState.month) {
-      drowdownvalue = context.appState.month;
-    }
-  }
+class MonthWidget extends StatelessWidget {
+  const MonthWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    log.fine('build');
-    return DropdownButtonHideUnderline(
-      child: DropdownButton<MonthModel>(
-        value: drowdownvalue,
-        items: widget.months
-            .map<DropdownMenuItem<MonthModel>>(
-              (e) => DropdownMenuItem<MonthModel>(
-                value: e,
-                child: Text(
-                  e.month,
-                ),
-              ),
-            )
-            .toList(),
-        onChanged: (value) {
-          if (value != null) {
-            setState(() {
-              FocusScope.of(context).requestFocus(FocusNode());
-              drowdownvalue = value;
-              WeekDayWidget.of(context).setMouths(drowdownvalue);
-            });
-          }
-        },
-      ),
+    final log = Logger('MonthWidget');
+    log.info('build');
+
+    return ValueListenableBuilder<MonthList>(
+      valueListenable: context.appState.months,
+      builder: (context, value, child) {
+        log.info('ValueListenableBuilder $value');
+        return DropDownWidget<MonthModel>(
+          key: const Key('monthListKey'),
+          list: value.months,
+          selectedValue: value.month,
+          callBack: (MonthModel newValue) {
+            context.appState.selectedMonthChanged(newValue);
+          },
+        );
+      },
     );
   }
 }

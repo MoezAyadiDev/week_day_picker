@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:week_day_picker/src/state/app_scope.dart';
-import 'package:week_day_picker/src/state/week_day_state.dart';
+import 'package:week_day_picker/src/states/color_provider.dart';
+import 'package:week_day_picker/src/states/weekday_provider.dart';
+import 'package:week_day_picker/src/states/weekday_state.dart';
 
 ///String Extension
 ///
@@ -21,7 +22,10 @@ extension ContextHelper on BuildContext {
   ///BuildContext extension
   ///
   ///[appState] : replace AppStateScope.of(context) with context.appState
-  WeekDayState get appState => AppStateScope.of(this);
+  WeekDayState get appState => WeekDayProvider.of(this);
+
+  ///[color] : replace AppStateScope.of(context) with context.color
+  ColorProvider get color => ColorProvider.of(this);
 }
 
 ///DateTime extension
@@ -34,4 +38,6 @@ extension DateTimeExt on DateTime {
   DateTime get dateOnly {
     return DateUtils.dateOnly(DateTime(year, month, day));
   }
+
+  //bool get isBeforeOrEquals
 }

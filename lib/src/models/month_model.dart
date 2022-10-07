@@ -1,3 +1,6 @@
+import 'package:intl/intl.dart';
+import 'package:week_day_picker/src/helpers/extensions.dart';
+
 class MonthModel {
   final String month;
   final int count;
@@ -21,6 +24,11 @@ class MonthModel {
 
   @override
   String toString() {
-    return 'MonthModel(count:$count,  month:\'$month\')';
+    return month;
+    //return 'MonthModel(count:$count,  month:\'$month\')';
   }
+
+  MonthModel.dayToMonthModel(DateTime date)
+      : month = DateFormat("MMMM").format(date).capitalize(),
+        count = date.month;
 }
