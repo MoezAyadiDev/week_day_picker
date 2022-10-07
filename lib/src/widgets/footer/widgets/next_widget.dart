@@ -2,31 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 
-class PreviousWidget extends StatelessWidget {
-  const PreviousWidget({super.key});
+class NextWidget extends StatelessWidget {
+  const NextWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('PreviousWidget');
+    final log = Logger('NextWidget');
     log.fine('build');
     return ValueListenableBuilder<bool>(
-      valueListenable: context.appState.isFirst,
+      valueListenable: context.appState.isLast,
       builder: (BuildContext context, bool value, _) {
-        log.fine('[ValueListenableBuilder] build');
+        log.fine('[ValueListenableBuilder] value = $value');
         return IconButton(
-          key: const Key('previousWeekKey'),
+          key: const Key('nextWeekKey'),
           onPressed: value
               ? null
               : () {
-                  context.appState.previousWeek();
+                  context.appState.nextWeek();
                 },
           icon: Icon(
-            Icons.keyboard_arrow_up_outlined,
+            Icons.keyboard_arrow_down_outlined,
             color: value ? context.color.disableColor : context.color.iconColor,
           ),
-          tooltip: value
-              ? null
-              : MaterialLocalizations.of(context).previousPageTooltip,
+          tooltip:
+              value ? null : MaterialLocalizations.of(context).nextPageTooltip,
         );
       },
     );

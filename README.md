@@ -1,39 +1,110 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+## Week Day Picker
+The widget display a dialog contain the calandar on week mode.
+Return a `Future<DateTime>` if the user select a date or `Future<null>` if the user cancel the dialog
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+## Installation
+Add `week_day_picker` to your `pubspec.yaml` as a dependacy
+```yaml
+dependencies:
+  week_day_picker:0.0.1
 ```
 
-## Additional information
+## Usage
+Import the package
+```dart
+import 'package:week_day_picker/week_day_picker.dart';
+```
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Create an instance of WeekDayPicker and invoke the show methode don't forget to await for response.
+it return a Future<DateTime> if the user select a date or Future<null> if the user cancel the picker or clicked outsie
+
+```dart
+ var weekDayPicker = WeekDayPicker(
+    context: context,
+    firstDate: DateTime(2021, 1, 13),
+    lastDate: DateTime(2023, 10, 19),
+);
+DateTime? selectedDate = await weekDayPicker.show();
+```
+Default current date is the system date, to change it use `currentDate` to highlight and show this date in first screen.
+```dart
+ var weekDayPicker = WeekDayPicker(
+    context: context,
+    firstDate: DateTime(2021),
+    lastDate: DateTime(2023),
+    currentDate : DateTime(2022, 10, 1),
+);
+```
+
+Use `initialDate` to send the selected Date to the dailog.
+Don't confuse it with current date the initialDate is the selected Date
+```dart
+ var weekDayPicker = WeekDayPicker(
+    context: context,
+    firstDate: DateTime(2021, 1, 13),
+    lastDate: DateTime(2023, 10, 19),
+    initialDate : DateTime(2022, 10, 1),
+);
+```
+
+To send list of selectable date use `selectableDay`
+```dart
+WeekDayPicker(
+    ...
+  selectableDay: [
+    DateTime(2022, 9, 12),
+    DateTime(2022, 9, 21)
+  ],
+);
+```
+
+Or you can use `selectableDayInWeek` to display only specific day on week
+begin by 
+Monday : 1 
+... 
+Sunday : 7.
+In this example the user can select only the date in Monday and Friday
+```dart
+WeekDayPicker(
+    ...
+  selectableDayInWeek: [1, 5],
+);
+```
+
+To combine `selectableDayInWeek` and `selectableDay` by default the picker use inner join. 
+That meen that the allowed date must satisfy the two condition.
+to provide outer join use the option `selectableBitwiseOperator`
+it can be 
+ - `BitwiseOperator.or` : Outer join
+ - `BitwiseOperator.and` : Inner join
+ ```dart
+ var response = await WeekDayPicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2021, 1, 13),
+    lastDate: DateTime(2023, 10, 19),
+    selectableDay: [
+        DateTime(2022, 9, 12),
+        DateTime(2022, 9, 21)
+    ],
+    selectableDayInWeek: [1, 5],
+    selectableBitwiseOperator: BitwiseOperator.or,
+).show();
+```
+
+## Language
+Bu passing the context th dialog use the application langugae 
+
+## Theming
+By default the dialog use default theme to change the theme color use is options :
+- `colorHeader`: Background header
+- `colorOnHeader` : Text header
+- `colorIcon` : Icon color (previous and next week)
+- `colorDisabled` : Text of not allowed date and icon color if the user rich the last or first week
+- `colorSelected` : The background color of selected date
+- `colorOnSelected` : The text color of selected date
+    
+    
+## Additional information
+for more information check the complete example :
+In case of problem please open an [issue](https://github.com/MoezAyadiDev/week_day_picker/issues/new?template=bug_report.md)
