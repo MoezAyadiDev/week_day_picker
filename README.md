@@ -108,6 +108,7 @@ By default the dialog use default theme to change the theme color use is options
 - `colorDisabled` : Text of not allowed date and icon color if the user rich the last or first week
 - `colorSelected` : The background color of selected date
 - `colorOnSelected` : The text color of selected date
+- `backgroundColor` : The surface color
     
     
 ## Additional information

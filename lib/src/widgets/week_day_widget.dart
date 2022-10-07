@@ -13,6 +13,7 @@ class WeekDayWidget extends StatelessWidget {
   final Color? disableColor;
   final Color? selectedColor;
   final Color? onSelectedColor;
+  final Color? backgroundColor;
   const WeekDayWidget({
     super.key,
     required this.headerColor,
@@ -21,6 +22,7 @@ class WeekDayWidget extends StatelessWidget {
     required this.disableColor,
     required this.selectedColor,
     required this.onSelectedColor,
+    required this.backgroundColor,
   });
 
   @override
@@ -77,7 +79,7 @@ class WeekDayWidget extends StatelessWidget {
           Radius.circular(20),
         ),
       ),
-      backgroundColor: surfaceColor,
+      backgroundColor: backgroundColor ?? surfaceColor,
       child: SingleChildScrollView(
         child: SizedBox(
           height: dialogSize.height,
