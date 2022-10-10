@@ -9,9 +9,12 @@ import 'package:week_day_picker/week_day_picker.dart';
 
 class WeekDayService {
   final SettingsState _settings;
-  const WeekDayService({
+  WeekDayService({
     required SettingsState settings,
-  }) : _settings = settings;
+    String locale = 'en',
+  }) : _settings = settings {
+    Intl.defaultLocale = locale;
+  }
 
   ///Get the list of year from first date and lastDate
   ///

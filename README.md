@@ -97,8 +97,18 @@ it can be
 ).show();
 ```
 
-## Language
-Bu passing the context th dialog use the application langugae 
+## Locale
+By passing the context th dialog use the default application locale.
+to change it use `local`
+ ```dart
+var response = WeekDayPicker(
+  context: context,
+  firstDate: DateTime(2021, 1, 13),
+  lastDate: DateTime(2023, 10, 19),
+  locale: const Locale('en', ''),
+).show();
+```
+
 
 ## Theming
 By default the dialog use default theme to change the theme color use is options :

@@ -23,7 +23,7 @@ class ItemWidget extends StatelessWidget {
 
         return Container(
           key: Key(DateFormat('yyyyMMdd').format(day.day)),
-          height: isDoublePadding ? 40.0 : 30,
+          height: context.widgetSize.itemHeight.height.value,
           margin: const EdgeInsets.symmetric(horizontal: 10.0),
           padding: EdgeInsets.symmetric(
             vertical: isSelected ? 2.0 : 3.0,

@@ -7,31 +7,31 @@ import 'package:week_day_picker/src/widgets/content/widgets/days_widget.dart';
 enum AnimationSense { none, previous, forward }
 
 class ContentWidget extends StatelessWidget {
-  final bool isDoublePadding;
-
-  const ContentWidget({
-    super.key,
-    required this.isDoublePadding,
-  });
+  const ContentWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final log = Logger('ContentWidget');
-    log.info('build');
-    double height = isDoublePadding ? 40 : 30;
-    return ValueListenableBuilder<List<DayModel>>(
-      valueListenable: context.appState.days,
-      builder: (context, value, child) {
-        log.info('ValueListenableBuilder $value');
-        return SizedBox(
-          height: height * 7,
-          child: DaysWidget(
-            days: value,
-            height: height,
-            isDoublePadding: isDoublePadding,
-          ),
-        );
-      },
-    );
+    log.fine('build');
+
+    return ValueListenableBuilder<double>(
+        valueListenable: context.widgetSize.itemHeight.height,
+        builder: (context, value, child) {
+          double height = value;
+          bool isDoublePadding = context.widgetSize.itemHeight.isDoublePadding;
+          return ValueListenableBuilder<List<DayModel>>(
+            valueListenable: context.appState.days,
+            builder: (context, value, child) {
+              return SizedBox(
+                height: height * 7,
+                child: DaysWidget(
+                  days: value,
+                  height: height,
+                  isDoublePadding: isDoublePadding,
+                ),
+              );
+            },
+          );
+        });
   }
 }

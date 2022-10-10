@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
         Locale('de', ''),
         Locale('it', ''),
       ],
-      locale: const Locale('en'),
+      locale: const Locale('fr'),
     );
   }
 }
@@ -266,6 +266,78 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 10),
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  var dayWeekPicker = WeekDayPicker(
+                    context: context,
+                    firstDate: DateTime.now().add(const Duration(days: -500)),
+                    lastDate: DateTime.now().add(const Duration(days: 500)),
+                    locale: const Locale('de', ''),
+                  );
+                  var response = await dayWeekPicker.show();
+                  setState(() {
+                    selectedDate = response;
+                  });
+                },
+                child: const Text('Dutch'),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  var dayWeekPicker = WeekDayPicker(
+                    context: context,
+                    firstDate: DateTime.now().add(const Duration(days: -500)),
+                    lastDate: DateTime.now().add(const Duration(days: 500)),
+                    locale: const Locale('it', ''),
+                  );
+                  var response = await dayWeekPicker.show();
+                  setState(() {
+                    selectedDate = response;
+                  });
+                },
+                child: const Text('Italie'),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  var dayWeekPicker = WeekDayPicker(
+                    context: context,
+                    firstDate: DateTime.now().add(const Duration(days: -500)),
+                    lastDate: DateTime.now().add(const Duration(days: 500)),
+                    locale: const Locale('en', ''),
+                  );
+                  var response = await dayWeekPicker.show();
+                  setState(() {
+                    selectedDate = response;
+                  });
+                },
+                child: const Text('English'),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: ElevatedButton(
+                onPressed: () async {
+                  //showDatePicker(context: context, initialDate: initialDate, firstDate: firstDate, lastDate: lastDate)
+                  var dayWeekPicker = WeekDayPicker(
+                    context: context,
+                    firstDate: DateTime.now().add(const Duration(days: -500)),
+                    lastDate: DateTime.now().add(const Duration(days: 500)),
+                    locale: const Locale('ar', ''),
+                  );
+                  var response = await dayWeekPicker.show();
+                  setState(() {
+                    selectedDate = response;
+                  });
+                },
+                child: const Text('Arabe'),
+              ),
+            ),
           ],
         ),
       ),
