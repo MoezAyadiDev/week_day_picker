@@ -1,7 +1,8 @@
 name: week_day_picker
-description: A new Flutter package project.
+description: Date time calandar display on week mode
 version: 0.0.1
-homepage:
+homepage: https://github.com/MoezAyadiDev/week_day_picker
+repository: https://github.com/MoezAyadiDev/week_day_picker
 
 environment:
   sdk: '>=2.18.1 <3.0.0'
