@@ -15,7 +15,7 @@ class TitleWidget extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 50,
+          height: 50 * context.widgetSize.scale,
           padding: EdgeInsets.zero,
           decoration: BoxDecoration(
             color: context.color.headerColor,
@@ -30,7 +30,7 @@ class TitleWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 50,
+          height: 50 * context.widgetSize.scale,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Row(

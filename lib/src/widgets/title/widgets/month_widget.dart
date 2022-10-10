@@ -11,12 +11,12 @@ class MonthWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final log = Logger('MonthWidget');
-    log.info('build');
+    log.fine('build');
 
     return ValueListenableBuilder<MonthList>(
       valueListenable: context.appState.months,
       builder: (context, value, child) {
-        log.info('ValueListenableBuilder $value');
+        log.fine('ValueListenableBuilder $value');
         return DropDownWidget<MonthModel>(
           key: const Key('monthListKey'),
           list: value.months,

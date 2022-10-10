@@ -71,6 +71,9 @@ class WeekDayPicker {
   ///The background Color
   final Color? backgroundColor;
 
+  ///The default local
+  final Locale? locale;
+
   /// Shows a dialog containing a Material Design date picker.
   ///
   /// When the widget displayed, it will show the month of and the year
@@ -113,6 +116,8 @@ class WeekDayPicker {
   ///
   ///[colorOnSelected] The text color of selected item
   ///
+  ///[locale] change the local by default is the application locale
+  ///
   WeekDayPicker({
     required this.context,
     this.initialDate,
@@ -129,6 +134,7 @@ class WeekDayPicker {
     this.colorSelected,
     this.colorOnSelected,
     this.backgroundColor,
+    this.locale,
   }) {
     assert(
       !lastDate.isBefore(firstDate),
@@ -156,7 +162,7 @@ class WeekDayPicker {
   ///Show the weekDayWidget
   ///
   Future<DateTime?> show() async {
-    Logger.root.level = Level.WARNING; // defaults to Level.INFO
+    Logger.root.level = Level.INFO; // defaults to Level.INFO
     Logger.root.clearListeners();
     Logger.root.onRecord.listen((record) {
       debugPrint(
@@ -172,35 +178,46 @@ class WeekDayPicker {
       selectableDayInWeek: selectableDayInWeek,
       selectableBitwiseOperator: selectableBitwiseOperator,
     );
+
+    Locale myLocale = locale ?? Localizations.localeOf(context);
+    Intl.defaultLocale = myLocale.toString();
+
     WeekDayService service = WeekDayService(
       settings: settings,
+      locale: myLocale.toString(),
     );
     WeekDayState weekDayState = WeekDayState(
       service: service,
       initialDate: initialDate,
     );
+    Widget myPicker;
+
+    //var log = Logger('showGeneralDialog');
+
+    myPicker = Localizations.override(
+      context: context,
+      locale: myLocale,
+      child: WeekDayProvider(
+        weekDayState: weekDayState,
+        child: WeekDayWidget(
+          headerColor: colorHeader,
+          onHeaderColor: colorOnHeader,
+          iconColor: colorIcon,
+          disableColor: colorDisabled,
+          selectedColor: colorSelected,
+          onSelectedColor: colorOnSelected,
+          backgroundColor: backgroundColor,
+        ),
+      ),
+    );
+
     DateTime? selectedDate = await showGeneralDialog<DateTime>(
       context: context,
       barrierDismissible: true,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: Colors.black54,
       pageBuilder: (context, anim1, anim2) {
-        Locale myLocale = Localizations.localeOf(context);
-        Intl.defaultLocale = myLocale.toString();
-        var log = Logger('showGeneralDialog');
-        log.fine('build');
-        return WeekDayProvider(
-          weekDayState: weekDayState,
-          child: WeekDayWidget(
-            headerColor: colorHeader,
-            onHeaderColor: colorOnHeader,
-            iconColor: colorIcon,
-            disableColor: colorDisabled,
-            selectedColor: colorSelected,
-            onSelectedColor: colorOnSelected,
-            backgroundColor: backgroundColor,
-          ),
-        );
+        return myPicker;
       },
     );
     return selectedDate;

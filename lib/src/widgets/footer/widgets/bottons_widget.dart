@@ -22,10 +22,11 @@ class BottonsWidget extends StatelessWidget {
                     : null,
                 child: Text(
                   MaterialLocalizations.of(context).okButtonLabel,
-                  style: Theme.of(context)
-                      .textTheme
-                      .button!
-                      .copyWith(color: context.color.iconColor),
+                  style: Theme.of(context).textTheme.button!.copyWith(
+                        color: value != null
+                            ? context.color.iconColor
+                            : context.color.disableColor,
+                      ),
                 ),
               );
             },

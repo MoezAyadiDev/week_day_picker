@@ -1,10 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/widget_helper.dart';
 import 'package:week_day_picker/src/states/color_provider.dart';
+import 'package:week_day_picker/src/states/item_height.dart';
+import 'package:week_day_picker/src/states/size_provider.dart';
 import 'package:week_day_picker/src/widgets/content/content_widget.dart';
 import 'package:week_day_picker/src/widgets/footer/footer_widget.dart';
 import 'package:week_day_picker/src/widgets/title/title_widget.dart';
+import 'dart:io' show Platform;
+
+enum TargerPlatform { normal, double }
 
 class WeekDayWidget extends StatelessWidget {
   final Color? headerColor;
@@ -29,7 +35,6 @@ class WeekDayWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var log = Logger('WeekDayWidget');
     log.fine('build');
-    Size dialogSize = getSize(context);
 
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
@@ -62,16 +67,25 @@ class WeekDayWidget extends StatelessWidget {
         ? colorScheme.onInverseSurface
         : colorScheme.surface;
     final Color onSurfaceColor = colorScheme.primary;
-
-    //ColorProvider colorProvider = ColorProvider()
-    //Title Widget
-    const Widget titel = TitleWidget(key: Key('titleWidgetKey'));
-    //Footer Widget
-    const Widget footer = FooterWidget(key: Key('footerWidgetKey'));
-
-    final contentWidget = ContentWidget(
-      isDoublePadding: dialogSize.height == maxHeight,
+    ItemHeight itemHeight = ItemHeight(
+      height: 40,
+      isDoublePadding: true,
+      widgetSize: const Size(400.0, 200.0),
     );
+    //Scale
+    TargerPlatform target;
+    if (kIsWeb) {
+      target = TargerPlatform.normal;
+    } else if (Platform.isLinux) {
+      target = TargerPlatform.normal;
+    } else if (Platform.isMacOS) {
+      target = TargerPlatform.normal;
+    } else if (Platform.isWindows) {
+      target = TargerPlatform.normal;
+    } else {
+      target = TargerPlatform.double;
+    }
+    double scale = (target == TargerPlatform.normal ? 1 : 1.2);
 
     return Dialog(
       shape: const RoundedRectangleBorder(
@@ -80,25 +94,43 @@ class WeekDayWidget extends StatelessWidget {
         ),
       ),
       backgroundColor: backgroundColor ?? surfaceColor,
-      child: SingleChildScrollView(
-        child: SizedBox(
-          height: dialogSize.height,
-          width: dialogSize.width,
-          child: ColorProvider(
-            headerColor: headerColor ?? primaryColor,
-            onHeaderColor: onHeaderColor ?? onPrimaryColor,
-            iconColor: iconColor ?? onSurfaceColor,
-            selectedColor: selectedColor ?? secondaryColor,
-            onSelectedColor: onSelectedColor ?? onSecondaryColor,
-            disableColor: disableColor ?? disableColors,
-            child: Column(
-              children: [
-                titel,
-                contentWidget,
-                footer,
-              ],
-            ),
-          ),
+      child: ColorProvider(
+        headerColor: headerColor ?? primaryColor,
+        onHeaderColor: onHeaderColor ?? onPrimaryColor,
+        iconColor: iconColor ?? onSurfaceColor,
+        selectedColor: selectedColor ?? secondaryColor,
+        onSelectedColor: onSelectedColor ?? onSecondaryColor,
+        disableColor: disableColor ?? disableColors,
+        child: SizeProvider(
+          itemHeight: itemHeight,
+          scale: scale,
+          child: Builder(builder: (context) {
+            log.fine('ColorProvider builder');
+
+            Size dialogSize = getSize(context, scale);
+
+            const contentWidget = ContentWidget();
+            //itemHeight.setHeight(isDoublePadding ? 40 * scale : 30 * scale);
+            itemHeight.setwidgetSize(dialogSize, scale);
+
+            //Title Widget
+            const Widget titel = TitleWidget(key: Key('titleWidgetKey'));
+            //Footer Widget
+            const Widget footer = FooterWidget(key: Key('footerWidgetKey'));
+            return SingleChildScrollView(
+              child: SizedBox(
+                height: dialogSize.height,
+                width: dialogSize.width,
+                child: Column(
+                  children: const [
+                    titel,
+                    contentWidget,
+                    footer,
+                  ],
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );

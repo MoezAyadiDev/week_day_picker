@@ -7,7 +7,6 @@ class ColorProvider extends InheritedWidget {
   final Color disableColor;
   final Color selectedColor;
   final Color onSelectedColor;
-
   const ColorProvider({
     Key? key,
     required Widget child,

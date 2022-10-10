@@ -13,14 +13,13 @@ const double minHeight = 360;
 ///bottom size = 60
 ///
 ///content size : min = 210, max = getSize - 160
-Size getSize(BuildContext context) {
+Size getSize(BuildContext context, double scale) {
   Size size = MediaQuery.of(context).size;
-  double width = min(250, size.width - 40);
+  double width = min(250 * scale, size.width * scale - 40);
   double maxHeightW = size.height - 40;
-  double height = (maxHeightW > maxHeight) ? maxHeight : minHeight;
-  // : (maxHeightW > minHeight)
-  //     ? minHeight
-  //     : maxHeight;
+  double height = (maxHeightW > (maxHeight * scale))
+      ? (maxHeight * scale)
+      : (minHeight * scale);
 
   return Size(width, height);
 }

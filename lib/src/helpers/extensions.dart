@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:week_day_picker/src/states/color_provider.dart';
+import 'package:week_day_picker/src/states/size_provider.dart';
 import 'package:week_day_picker/src/states/weekday_provider.dart';
 import 'package:week_day_picker/src/states/weekday_state.dart';
 
@@ -26,6 +27,9 @@ extension ContextHelper on BuildContext {
 
   ///[color] : replace AppStateScope.of(context) with context.color
   ColorProvider get color => ColorProvider.of(this);
+
+  ///[size] : replace AppStateScope.of(context) with context.color
+  SizeProvider get widgetSize => SizeProvider.of(this);
 }
 
 ///DateTime extension

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/helpers/widget_helper.dart';
 import 'package:week_day_picker/src/models/day_model.dart';
 import 'package:week_day_picker/src/widgets/content/widgets/item_widget.dart';
@@ -23,13 +25,13 @@ class DaysWidget extends StatefulWidget {
 
 class _DaysWidgetState extends State<DaysWidget>
     with SingleTickerProviderStateMixin {
-  // final log = Logger('DayWidget');
+  final log = Logger('DayWidget');
   late List<DayModel> days;
   late AnimationController animationController;
   late Animation positionAnimation;
   AnimationSense animationSense = AnimationSense.none;
   double firstPosition = 0.0;
-
+  AnimationSense dragCallBack = AnimationSense.none;
   @override
   void initState() {
     super.initState();
@@ -62,6 +64,7 @@ class _DaysWidgetState extends State<DaysWidget>
             }
             firstPosition = 0.0;
             animationSense = AnimationSense.none;
+            dragCallBack = AnimationSense.none;
           }
         },
       );
@@ -100,21 +103,45 @@ class _DaysWidgetState extends State<DaysWidget>
     return AnimatedBuilder(
       animation: animationController,
       builder: ((context, child) {
-        return Stack(
-          clipBehavior: Clip.hardEdge,
-          children: [
-            for (int i = 0; i < days.length; i++)
-              Positioned(
-                top: firstPosition + widget.height * i,
-                left: 0,
-                right: 0,
-                child: ItemWidget(
-                  key: Key(days[i].day.toString()),
-                  day: days[i],
-                  isDoublePadding: widget.isDoublePadding,
+        return GestureDetector(
+          onVerticalDragUpdate: (details) {
+            if (dragCallBack == AnimationSense.none) {
+              if (details.delta.dy > 7) {
+                dragCallBack = AnimationSense.previous;
+                context.appState.previousWeek();
+                log.info('previousWeek');
+              } else if (details.delta.dy < -7) {
+                dragCallBack = AnimationSense.forward;
+                context.appState.nextWeek();
+                log.info('next');
+              }
+            }
+          },
+          // onVerticalDragEnd: (details) {
+          //   if (dragCallBack == AnimationSense.forward) {
+          //     dragCallBack = AnimationSense.none;
+          //     context.appState.nextWeek();
+          //   } else if (dragCallBack == AnimationSense.previous) {
+          //     dragCallBack = AnimationSense.none;
+          //     context.appState.previousWeek();
+          //   }
+          // },
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+              for (int i = 0; i < days.length; i++)
+                Positioned(
+                  top: firstPosition + widget.height * i,
+                  left: 0,
+                  right: 0,
+                  child: ItemWidget(
+                    key: Key(days[i].day.toString()),
+                    day: days[i],
+                    isDoublePadding: widget.isDoublePadding,
+                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         );
       }),
     );

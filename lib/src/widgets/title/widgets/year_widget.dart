@@ -9,11 +9,10 @@ class YearWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final log = Logger('YearWidget');
-    log.info('build');
+    log.fine('build');
     return ValueListenableBuilder<int>(
       valueListenable: context.appState.year,
       builder: (context, value, child) {
-        log.info('ValueListenableBuilder $value');
         return DropDownWidget<int>(
           key: const Key('yearListKey'),
           list: context.appState.years,

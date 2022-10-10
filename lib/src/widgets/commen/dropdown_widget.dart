@@ -36,7 +36,7 @@ class _DropDownWidgetState<T> extends State<DropDownWidget<T>>
 
   @override
   Widget build(BuildContext context) {
-    log.info('build');
+    log.fine('build');
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<T>(
