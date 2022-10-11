@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 
 class NextWidget extends StatelessWidget {
@@ -7,12 +7,12 @@ class NextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('NextWidget');
-    log.fine('build');
+    // final log = Logger('NextWidget');
+    // log.fine('build');
     return ValueListenableBuilder<bool>(
       valueListenable: context.appState.isLast,
       builder: (BuildContext context, bool value, _) {
-        log.fine('[ValueListenableBuilder] value = $value');
+        // log.fine('[ValueListenableBuilder] value = $value');
         return IconButton(
           key: const Key('nextWeekKey'),
           onPressed: value

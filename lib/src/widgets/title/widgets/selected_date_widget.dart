@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 
 class SelectedDateWidget extends StatelessWidget {
@@ -8,13 +8,12 @@ class SelectedDateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('SelectedDateWidget');
-    log.fine('build');
+    // final log = Logger('SelectedDateWidget');
+    // log.fine('build');
     return Center(
       child: ValueListenableBuilder<DateTime?>(
         valueListenable: context.appState.selectedDate,
         builder: (BuildContext context, DateTime? value, Widget? child) {
-          log.fine('[ValueListenableBuilder] build');
           String textDate = (value != null)
               ? DateFormat('EEEE dd MMM yyyy').format(value).capitalize()
               : MaterialLocalizations.of(context).datePickerHelpText;

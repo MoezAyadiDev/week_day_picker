@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/helpers/widget_helper.dart';
 import 'package:week_day_picker/src/models/day_model.dart';
@@ -25,7 +25,7 @@ class DaysWidget extends StatefulWidget {
 
 class _DaysWidgetState extends State<DaysWidget>
     with SingleTickerProviderStateMixin {
-  final log = Logger('DayWidget');
+  // final log = Logger('DayWidget');
   late List<DayModel> days;
   late AnimationController animationController;
   late Animation positionAnimation;
@@ -106,26 +106,18 @@ class _DaysWidgetState extends State<DaysWidget>
         return GestureDetector(
           onVerticalDragUpdate: (details) {
             if (dragCallBack == AnimationSense.none) {
-              if (details.delta.dy > 7) {
+              if (details.delta.dy > 7 && (!context.appState.isFirst.value)) {
                 dragCallBack = AnimationSense.previous;
                 context.appState.previousWeek();
-                log.info('previousWeek');
-              } else if (details.delta.dy < -7) {
+                // log.info('previousWeek');
+              } else if (details.delta.dy < -7 &&
+                  (!context.appState.isLast.value)) {
                 dragCallBack = AnimationSense.forward;
                 context.appState.nextWeek();
-                log.info('next');
+                // log.info('next');
               }
             }
           },
-          // onVerticalDragEnd: (details) {
-          //   if (dragCallBack == AnimationSense.forward) {
-          //     dragCallBack = AnimationSense.none;
-          //     context.appState.nextWeek();
-          //   } else if (dragCallBack == AnimationSense.previous) {
-          //     dragCallBack = AnimationSense.none;
-          //     context.appState.previousWeek();
-          //   }
-          // },
           child: Stack(
             clipBehavior: Clip.hardEdge,
             children: [

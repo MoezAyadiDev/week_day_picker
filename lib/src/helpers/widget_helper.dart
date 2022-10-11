@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 
 const double maxHeight = 439;
 const double minHeight = 360;
@@ -27,10 +27,9 @@ Size getSize(BuildContext context, double scale) {
 Function listEquality = const ListEquality().equals;
 
 Widget widgetBuilder({required Widget child, required Size size}) {
-  var log = Logger('widgetBuilder');
-  log.fine('build : ${size.height}');
+  // var log = Logger('widgetBuilder');
+  // log.fine('build : ${size.height}');
   if (size.height < minHeight) {
-    log.fine('size.height < minHeight');
     return SingleChildScrollView(
       child: SizedBox(
         height: size.height,
@@ -39,7 +38,6 @@ Widget widgetBuilder({required Widget child, required Size size}) {
       ),
     );
   } else {
-    log.fine('size ok');
     return SizedBox(
       height: size.height,
       width: size.width,
