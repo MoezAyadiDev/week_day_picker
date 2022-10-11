@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/widget_helper.dart';
 import 'package:week_day_picker/src/states/color_provider.dart';
 import 'package:week_day_picker/src/states/item_height.dart';
@@ -33,8 +33,8 @@ class WeekDayWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var log = Logger('WeekDayWidget');
-    log.fine('build');
+    // var log = Logger('WeekDayWidget');
+    // log.fine('build');
 
     final ThemeData theme = Theme.of(context);
     final ColorScheme colorScheme = theme.colorScheme;
@@ -105,12 +105,9 @@ class WeekDayWidget extends StatelessWidget {
           itemHeight: itemHeight,
           scale: scale,
           child: Builder(builder: (context) {
-            log.fine('ColorProvider builder');
-
             Size dialogSize = getSize(context, scale);
 
             const contentWidget = ContentWidget();
-            //itemHeight.setHeight(isDoublePadding ? 40 * scale : 30 * scale);
             itemHeight.setwidgetSize(dialogSize, scale);
 
             //Title Widget

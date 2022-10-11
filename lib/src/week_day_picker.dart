@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:logging/logging.dart';
-import 'package:week_day_picker/src/helpers/date_helper.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/services/week_day_service.dart';
 import 'package:week_day_picker/src/states/settings_state.dart';
@@ -162,13 +161,13 @@ class WeekDayPicker {
   ///Show the weekDayWidget
   ///
   Future<DateTime?> show() async {
-    Logger.root.level = Level.INFO; // defaults to Level.INFO
-    Logger.root.clearListeners();
-    Logger.root.onRecord.listen((record) {
-      debugPrint(
-          '${record.sequenceNumber.toString().padRight(3)}: ${record.level.name} - [${record.loggerName.padRight(20, '.')}]: '
-          '${timeOnly(record.time)}: ${record.message}');
-    });
+    // Logger.root.level = Level.INFO; // defaults to Level.INFO
+    // Logger.root.clearListeners();
+    // Logger.root.onRecord.listen((record) {
+    //   debugPrint(
+    //       '${record.sequenceNumber.toString().padRight(3)}: ${record.level.name} - [${record.loggerName.padRight(20, '.')}]: '
+    //       '${timeOnly(record.time)}: ${record.message}');
+    // });
     //Todo : add RestorableValue
     SettingsState settings = SettingsState(
       firstDate: firstDate.dateOnly,

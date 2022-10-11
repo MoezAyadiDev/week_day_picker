@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/models/day_model.dart';
 import 'package:week_day_picker/src/widgets/content/widgets/days_widget.dart';
@@ -11,8 +11,8 @@ class ContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('ContentWidget');
-    log.fine('build');
+    // final log = Logger('ContentWidget');
+    // log.fine('build');
 
     return ValueListenableBuilder<double>(
         valueListenable: context.widgetSize.itemHeight.height,

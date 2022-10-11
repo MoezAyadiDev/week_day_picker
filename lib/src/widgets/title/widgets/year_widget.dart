@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/widgets/commen/dropdown_widget.dart';
 
@@ -8,8 +8,8 @@ class YearWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('YearWidget');
-    log.fine('build');
+    // final log = Logger('YearWidget');
+    // log.fine('build');
     return ValueListenableBuilder<int>(
       valueListenable: context.appState.year,
       builder: (context, value, child) {

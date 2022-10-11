@@ -7,7 +7,7 @@ Return a `Future<DateTime>` if the user select a date or `Future<null>` if the u
 Add `week_day_picker` to your `pubspec.yaml` as a dependacy
 ```yaml
 dependencies:
-  week_day_picker:0.0.1
+  week_day_picker:0.1.1
 ```
 
 ## Usage
@@ -62,7 +62,8 @@ WeekDayPicker(
 ```
 
 Or you can use `selectableDayInWeek` to display only specific day on week
-begin by 
+begin by
+
 Monday : 1 
 ... 
 Sunday : 7.
@@ -78,7 +79,8 @@ WeekDayPicker(
 
 To combine `selectableDayInWeek` and `selectableDay` by default the picker use inner join. 
 That meen that the allowed date must satisfy the two condition.
-to provide outer join use the option `selectableBitwiseOperator`
+
+To provide outer join use the option `selectableBitwiseOperator`
 it can be 
  - `BitwiseOperator.or` : Outer join
  - `BitwiseOperator.and` : Inner join
@@ -98,8 +100,8 @@ it can be
 ```
 
 ## Locale
-By passing the context th dialog use the default application locale.
-to change it use `local`
+By passing the context the dialog use the default application locale.
+to change it use `locale`
  ```dart
 var response = WeekDayPicker(
   context: context,
@@ -111,7 +113,7 @@ var response = WeekDayPicker(
 
 
 ## Theming
-By default the dialog use default theme to change the theme color use is options :
+By default the dialog use default theme. To override the theme check the list below :
 - `colorHeader`: Background header
 - `colorOnHeader` : Text header
 - `colorIcon` : Icon color (previous and next week)

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 
 class BottonsWidget extends StatelessWidget {
@@ -7,8 +7,8 @@ class BottonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('BottonsWidget');
-    log.fine('build');
+    // final log = Logger('BottonsWidget');
+    // log.fine('build');
     return Expanded(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

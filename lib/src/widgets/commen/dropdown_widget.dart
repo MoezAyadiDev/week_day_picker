@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 
 class DropDownWidget<T> extends StatefulWidget {
   final List<T> list;
@@ -19,7 +19,7 @@ class DropDownWidget<T> extends StatefulWidget {
 class _DropDownWidgetState<T> extends State<DropDownWidget<T>>
     with SingleTickerProviderStateMixin {
   late T drowdownvalue;
-  final log = Logger('DropDownWidget');
+  // final log = Logger('DropDownWidget');
   @override
   void initState() {
     super.initState();
@@ -36,7 +36,7 @@ class _DropDownWidgetState<T> extends State<DropDownWidget<T>>
 
   @override
   Widget build(BuildContext context) {
-    log.fine('build');
+    // log.fine('build');
 
     return DropdownButtonHideUnderline(
       child: DropdownButton<T>(

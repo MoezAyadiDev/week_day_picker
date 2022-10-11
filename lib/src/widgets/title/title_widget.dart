@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+// import 'package:logging/logging.dart';
 import 'package:week_day_picker/src/helpers/extensions.dart';
 import 'package:week_day_picker/src/models/month_list.dart';
 import 'package:week_day_picker/src/widgets/title/widgets/title_widgets.dart';
@@ -9,8 +9,8 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final log = Logger('TitleWidget');
-    log.fine('build');
+    // final log = Logger('TitleWidget');
+    // log.fine('build');
     return Column(
       children: [
         Container(
@@ -45,7 +45,7 @@ class TitleWidget extends StatelessWidget {
                       ValueListenableBuilder<MonthList>(
                         valueListenable: context.appState.months,
                         builder: (context, value, child) {
-                          log.fine('ValueListenableBuilder build');
+                          // log.fine('ValueListenableBuilder build');
                           return Container();
                         },
                       ),
