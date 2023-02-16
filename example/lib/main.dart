@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 (selectedDate != null)
                     ? 'Selected Date : ${selectedDate.toString().substring(0, 10)}'
                     : 'Select a date',
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             const SizedBox(height: 10),
