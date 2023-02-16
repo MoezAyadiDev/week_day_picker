@@ -66,24 +66,24 @@ class ItemWidget extends StatelessWidget {
                   Text(
                     day.title,
                     style: isSelected
-                        ? Theme.of(context).textTheme.bodyText2!.copyWith(
+                        ? Theme.of(context).textTheme.bodyMedium!.copyWith(
                               color: context.color.onSelectedColor,
                             )
                         : day.isAllowed
                             ? null
-                            : Theme.of(context).textTheme.bodyText2!.copyWith(
+                            : Theme.of(context).textTheme.bodyMedium!.copyWith(
                                   color: context.color.disableColor,
                                 ),
                   ),
                   Text(
                     DateFormat('dd MMM').format(day.day),
                     style: isSelected
-                        ? Theme.of(context).textTheme.bodyText2!.copyWith(
+                        ? Theme.of(context).textTheme.bodyMedium!.copyWith(
                               color: context.color.onSelectedColor,
                             )
                         : day.isAllowed
                             ? null
-                            : Theme.of(context).textTheme.bodyText2!.copyWith(
+                            : Theme.of(context).textTheme.bodyMedium!.copyWith(
                                   color: context.color.disableColor,
                                 ),
                   ),

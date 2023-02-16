@@ -22,7 +22,7 @@ class BottonsWidget extends StatelessWidget {
                     : null,
                 child: Text(
                   MaterialLocalizations.of(context).okButtonLabel,
-                  style: Theme.of(context).textTheme.button!.copyWith(
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
                         color: value != null
                             ? context.color.iconColor
                             : context.color.disableColor,
@@ -38,7 +38,7 @@ class BottonsWidget extends StatelessWidget {
               MaterialLocalizations.of(context).cancelButtonLabel,
               style: Theme.of(context)
                   .textTheme
-                  .button!
+                  .labelLarge!
                   .copyWith(color: context.color.iconColor),
             ),
           ),

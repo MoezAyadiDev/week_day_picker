@@ -21,7 +21,7 @@ class SelectedDateWidget extends StatelessWidget {
             textDate,
             style: Theme.of(context)
                 .textTheme
-                .subtitle1!
+                .titleMedium!
                 .copyWith(color: context.color.onHeaderColor),
             overflow: TextOverflow.fade,
             maxLines: 2,
