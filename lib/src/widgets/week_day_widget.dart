@@ -59,8 +59,8 @@ class WeekDayWidget extends StatelessWidget {
     //Disabled color to show when Date is not valid
     final Color disableColors = isDark
         //
-        ? colorScheme.surfaceVariant
-        : colorScheme.surfaceVariant;
+        ? colorScheme.outline
+        : colorScheme.outlineVariant;
 
     final Color surfaceColor = isDark
         //
@@ -118,8 +118,8 @@ class WeekDayWidget extends StatelessWidget {
               child: SizedBox(
                 height: dialogSize.height,
                 width: dialogSize.width,
-                child: Column(
-                  children: const [
+                child: const Column(
+                  children: [
                     titel,
                     contentWidget,
                     footer,

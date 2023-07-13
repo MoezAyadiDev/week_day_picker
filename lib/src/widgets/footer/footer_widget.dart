@@ -12,10 +12,10 @@ class FooterWidget extends StatelessWidget {
     // log.fine('build');
     return SizedBox(
       height: 50 * context.widgetSize.scale,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: Row(
-          children: const [
+          children: [
             NextWidget(),
             BottonsWidget(
               key: Key('Bottom_Widget_Key'),
