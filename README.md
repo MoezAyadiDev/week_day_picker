@@ -7,7 +7,7 @@ Return a `Future<DateTime>` if the user select a date or `Future<null>` if the u
 Add `week_day_picker` to your `pubspec.yaml` as a dependacy
 ```yaml
 dependencies:
-  week_day_picker:0.1.1
+  week_day_picker:1.1.0
 ```
 
 ## Usage
