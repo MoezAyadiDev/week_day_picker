@@ -6,13 +6,10 @@ class WeekDayProvider extends InheritedWidget {
   final WeekDayState weekDayState;
 
   const WeekDayProvider({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.weekDayState,
-  }) : super(
-          key: key,
-          child: child,
-        );
+  });
 
   static WeekDayState of(BuildContext context) => context
       .dependOnInheritedWidgetOfExactType<WeekDayProvider>()!
