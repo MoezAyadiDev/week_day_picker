@@ -90,6 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    DateTime firstDate = DateTime.now().add(const Duration(days: -356));
+    DateTime lastDate = DateTime.now().add(const Duration(days: 356));
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -121,8 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   var dayWeekPicker = WeekDayPicker(
                     context: context,
-                    firstDate: DateTime.now().add(const Duration(days: -500)),
-                    lastDate: DateTime.now().add(const Duration(days: 500)),
+                    firstDate: firstDate,
+                    lastDate: lastDate,
                     initialDate: selectedDate,
                   );
                   var response = await dayWeekPicker.show();
@@ -139,9 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   var response = await WeekDayPicker(
                     context: context,
-                    firstDate: DateTime(2022, 10, 1),
-                    lastDate: DateTime(2022, 10, 31),
-                    currentDate: DateTime(2022, 10, 24),
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    // currentDate: DateTime(2022, 10, 24),
                     selectableDayInWeek: [1, 5], //Active Date: Monday & Friday
                   ).show();
                   setState(() {
@@ -157,17 +159,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   var response = await WeekDayPicker(
                     context: context,
-                    firstDate: DateTime(2022, 10, 1),
-                    lastDate: DateTime(2022, 10, 31),
-                    currentDate: DateTime(2022, 10, 19),
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    currentDate: DateTime.now(),
                     selectableDay: [
-                      DateTime(2022, 10, 5),
-                      DateTime(2022, 10, 14),
-                      DateTime(2022, 10, 17),
-                      DateTime(2022, 10, 21),
-                      DateTime(2022, 10, 25),
-                      DateTime(2022, 10, 26),
-                      DateTime(2022, 10, 27),
+                      DateTime.now().add(const Duration(days: -5)),
+                      DateTime.now().add(const Duration(days: 2)),
+                      DateTime.now().add(const Duration(days: 5)),
+                      DateTime.now().add(const Duration(days: 6)),
+                      DateTime.now().add(const Duration(days: 8)),
+                      DateTime.now().add(const Duration(days: 10)),
                     ],
                   ).show();
                   setState(() {
@@ -183,17 +184,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   var response = await WeekDayPicker(
                     context: context,
-                    firstDate: DateTime(2022, 10, 1),
-                    lastDate: DateTime(2022, 10, 31),
-                    currentDate: DateTime(2022, 10, 19),
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    currentDate: DateTime.now(),
                     selectableDay: [
-                      DateTime(2022, 10, 5),
-                      DateTime(2022, 10, 14), //Active Date
-                      DateTime(2022, 10, 17), //Active Date
-                      DateTime(2022, 10, 21), //Active Date
-                      DateTime(2022, 10, 25),
-                      DateTime(2022, 10, 26),
-                      DateTime(2022, 10, 27),
+                      DateTime.now().add(const Duration(days: -5)),
+                      DateTime.now().add(const Duration(days: 2)),
+                      DateTime.now().add(const Duration(days: 5)),
+                      DateTime.now().add(const Duration(days: 6)),
+                      DateTime.now().add(const Duration(days: 8)),
+                      DateTime.now().add(const Duration(days: 10)),
                     ],
                     selectableDayInWeek: [1, 5],
                   ).show();
@@ -210,13 +210,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   WeekDayPicker(
                     context: context,
-                    firstDate: DateTime(2021, 1, 13),
-                    lastDate: DateTime(2023, 10, 19),
-                    currentDate: DateTime(2022, 10, 1),
-                    initialDate: DateTime(2022, 10, 11),
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    currentDate: DateTime.now(),
+                    initialDate: selectedDate,
                     selectableDay: [
-                      DateTime(2022, 9, 12),
-                      DateTime(2022, 9, 21)
+                      DateTime.now().add(const Duration(days: -5)),
+                      DateTime.now().add(const Duration(days: 2)),
+                      DateTime.now().add(const Duration(days: 5)),
+                      DateTime.now().add(const Duration(days: 6)),
                     ],
                     selectableDayInWeek: [1, 5],
                     selectableBitwiseOperator: BitwiseOperator.or,
@@ -225,11 +227,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   var response = await WeekDayPicker(
                     context: context,
                     //initialDate: DateTime.now(),
-                    firstDate: DateTime(2021, 1, 13),
-                    lastDate: DateTime(2023, 10, 19),
+                    firstDate: DateTime.now().add(const Duration(days: -356)),
+                    lastDate: DateTime.now().add(const Duration(days: 356)),
                     selectableDay: [
-                      DateTime(2022, 9, 12),
-                      DateTime(2022, 9, 21)
+                      DateTime.now().add(const Duration(days: 2)),
+                      DateTime.now().add(const Duration(days: 4)),
                     ],
                     selectableDayInWeek: [1, 5],
                     selectableBitwiseOperator: BitwiseOperator.or,
