@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
         Locale('de', ''),
         Locale('it', ''),
       ],
-      locale: const Locale('fr'),
+      locale: const Locale('en'),
     );
   }
 }
@@ -123,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     firstDate: DateTime.now().add(const Duration(days: -500)),
                     lastDate: DateTime.now().add(const Duration(days: 500)),
+                    initialDate: selectedDate,
                   );
                   var response = await dayWeekPicker.show();
                   setState(() {
@@ -248,8 +249,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     context: context,
                     initialDate: DateTime.now(),
                     currentDate: DateTime.now().add(const Duration(days: -3)),
-                    firstDate: DateTime(2021, 10, 1),
-                    lastDate: DateTime(2023, 10, 19),
+                    firstDate: DateTime.now().add(const Duration(days: -356)),
+                    lastDate: DateTime.now().add(const Duration(days: 356)),
                     colorHeader: Colors.blue[700],
                     colorOnHeader: Colors.blue[100],
                     colorIcon: Colors.blueAccent[200],
