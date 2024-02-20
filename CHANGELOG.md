@@ -1,3 +1,9 @@
+## 1.1.1
+
+- update dart sdk: '>=3.3.0 <4.0.0'
+- update intl package to ^0.19.0
+
+
 ## 1.1.0
 
 - Merge to stable version

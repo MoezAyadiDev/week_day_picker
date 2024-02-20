@@ -1,26 +1,30 @@
 name: week_day_picker
 description: week day picker is a dart package to show a date calandar as a week, targeting all platform, customized Theme and Locale
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/MoezAyadiDev/week_day_picker
 repository: https://github.com/MoezAyadiDev/week_day_picker
+screenshots:
+ - description: 'Simple day picker with customized style'
+   path: screenshots/week_day_picker.gif 
+   
 
 environment:
-  sdk: '>=2.19.2 <4.0.0'
-  flutter: ">=3.0.0"
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations: 
-    sdk: flutter   
-  collection: ^1.17.1
-  intl: ^0.18.0
+  # flutter_localizations: 
+  #   sdk: flutter   
+  intl: ^0.19.0
+  # collection: ^1.18.0
   # logging: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^3.0.1
   mockito: ^5.3.2
 
 flutter:

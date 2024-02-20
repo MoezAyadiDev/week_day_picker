@@ -6,14 +6,11 @@ class SizeProvider extends InheritedWidget {
   final double scale;
 
   const SizeProvider({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.itemHeight,
     required this.scale,
-  }) : super(
-          key: key,
-          child: child,
-        );
+  });
 
   static SizeProvider of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<SizeProvider>()!;
