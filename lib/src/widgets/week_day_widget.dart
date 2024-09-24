@@ -8,7 +8,7 @@ import 'package:week_day_picker/src/states/size_provider.dart';
 import 'package:week_day_picker/src/widgets/content/content_widget.dart';
 import 'package:week_day_picker/src/widgets/footer/footer_widget.dart';
 import 'package:week_day_picker/src/widgets/title/title_widget.dart';
-import 'dart:io' show Platform;
+// import 'dart:io' show Platform;
 
 enum TargerPlatform { normal, double }
 
@@ -74,13 +74,15 @@ class WeekDayWidget extends StatelessWidget {
     );
     //Scale
     TargerPlatform target;
+    TargetPlatform plt = Theme.of(context).platform;
+
     if (kIsWeb) {
       target = TargerPlatform.normal;
-    } else if (Platform.isLinux) {
+    } else if (plt == TargetPlatform.linux) {
       target = TargerPlatform.normal;
-    } else if (Platform.isMacOS) {
+    } else if (plt == TargetPlatform.macOS) {
       target = TargerPlatform.normal;
-    } else if (Platform.isWindows) {
+    } else if (plt == TargetPlatform.windows) {
       target = TargerPlatform.normal;
     } else {
       target = TargerPlatform.double;

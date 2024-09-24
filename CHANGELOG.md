@@ -1,3 +1,7 @@
+## 1.1.3
+
+- Add wasm support
+
 ## 1.1.2
 
 - update dart sdk: '>=3.5.3 <4.0.0'
