@@ -1,8 +1,12 @@
+## 1.1.2
+
+- update dart sdk: '>=3.5.3 <4.0.0'
+- update mockito package to ^5.4.4
+
 ## 1.1.1
 
 - update dart sdk: '>=3.3.0 <4.0.0'
 - update intl package to ^0.19.0
-
 
 ## 1.1.0
 
@@ -20,7 +24,6 @@
 ## 0.1.1
 
 - Bug fix : Drag pehavious when last or first week reached
-
 
 ## 0.1.0
 
