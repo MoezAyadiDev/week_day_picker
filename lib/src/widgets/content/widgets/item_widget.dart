@@ -51,7 +51,7 @@ class ItemWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 border: isSelected
                     ? Border.all(
-                        color: context.color.headerColor.withOpacity(0.5),
+                        color: context.color.headerColor.withValues(alpha: 0.5),
                       )
                     : isCurrentDate
                         ? Border.all(
