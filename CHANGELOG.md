@@ -1,3 +1,8 @@
+## 1.1.6
+
+- update dart sdk.
+- fix : warning `Missing type annotation`.
+
 ## 1.1.5
 
 - update dart sdk: ">=3.6.0 <4.0.0"
