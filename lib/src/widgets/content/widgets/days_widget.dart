@@ -139,7 +139,7 @@ class _DaysWidgetState extends State<DaysWidget>
     );
   }
 
-  next() {
+  void next() {
     animationSense = AnimationSense.forward;
     days.addAll(widget.days);
     animationController
@@ -147,7 +147,7 @@ class _DaysWidgetState extends State<DaysWidget>
       ..forward();
   }
 
-  previous() {
+  void previous() {
     animationSense = AnimationSense.previous;
     days.insertAll(0, widget.days);
     firstPosition = -(widget.height * 7);

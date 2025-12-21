@@ -12,7 +12,7 @@ class ItemHeight {
     required this.widgetSize,
   }) : height = ValueNotifier(height);
 
-  setwidgetSize(newSize, scale) {
+  void setwidgetSize(Size newSize, double scale) {
     widgetSize = newSize;
     isDoublePadding = widgetSize.height == maxHeight * scale;
     height.value = (isDoublePadding) ? 40.0 * scale : 30.0 * scale;

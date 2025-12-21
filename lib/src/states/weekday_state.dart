@@ -27,7 +27,7 @@ class WeekDayState {
   //SELECTED DATE BLOC
   ValueNotifier<DateTime?> selectedDate;
 
-  selectedDateChanged(DateTime newSelectedDate) {
+  void selectedDateChanged(DateTime newSelectedDate) {
     // log.finest('selectedDateChanged');
     selectedDate.value = newSelectedDate;
   }
@@ -37,8 +37,7 @@ class WeekDayState {
 
   //MONTH DATE BLOC
   ValueNotifier<MonthList> months;
-  selectedMonthChanged(MonthModel newMonth) {
-    // log.finest('selectedMonthChanged');
+  void selectedMonthChanged(MonthModel newMonth) {
     if (newMonth == months.value.month) {
       return;
     }
@@ -66,7 +65,7 @@ class WeekDayState {
 
   //YEAR DATE BLOC
   ValueNotifier<int> year;
-  selectedYearChanged(int newYear) {
+  void selectedYearChanged(int newYear) {
     // log.fine('selectedYearChanged $newYear');
     if (newYear == year.value) {
       return;
@@ -103,7 +102,7 @@ class WeekDayState {
   late ValueNotifier<bool> isFirst;
   //   ValueNotifier(_service.isFirstWeek(days.value[0].day));
 
-  nextWeek() {
+  void nextWeek() {
     // log.finest('nextWeek : ${isLast.value}');
     if (!isLast.value) {
       DateTime newDate = _service.getNextWeek(days.value[0].day);
@@ -127,7 +126,7 @@ class WeekDayState {
     // log.finest('nextWeek final : ${isLast.value}');
   }
 
-  previousWeek() {
+  void previousWeek() {
     // log.finest('previousWeek : ${isFirst.value}');
     if (!isFirst.value) {
       DateTime newDate = _service.getLastWeek(days.value[0].day);
